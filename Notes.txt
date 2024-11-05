@@ -21,7 +21,7 @@ How does Jdbc works ?
     - Alone for Jdbc API it is not possible to  create a connection to  the particular database and do the CRUD operations.
     - Jdbc API needs the help of respective driver software in order to create a connection.
     - These driver software will be provided by database vendors.
-    - Jdbc API is independent of databases and driver software are denpendent on database.
+    - Jdbc API is independent of databases and driver software are dependent on database.
 
 Steps to create connection to the database:
   Step 1. Loading the Driver:
