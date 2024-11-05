@@ -37,7 +37,6 @@ public class InsertUsingPreparedStatement {
 				int eid = sc.nextInt();
 				System.out.println("Enter emplyoee Name:");
 				String ename = sc.nextLine();
-				sc.nextLine();
 				System.out.println("Enter emplyoee Email:");
 				String eemail = sc.nextLine();
 				
