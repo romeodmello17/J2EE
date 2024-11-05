@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="C:\Users\Rahul\Desktop\JDBC\DemoProject"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -43,11 +44,13 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="com.home"/>
 			<item value="com.ty"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="HomeProject"/>
 			<item value="DemoProject"/>
 		</list>
 		<list key="projectNameTemplate">

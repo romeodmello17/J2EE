@@ -181,6 +181,11 @@ public class Fetch {
 
 Types of Statements :
   1. Statement:
+	 		- Statement is an interface present inside java.sql package.
+            - We can create Statement object by using createStatement() method present inside Connection object.
+            - Mainly we use Statement to execute static queries or DDL Statements.
+            - createStatement() method throws sql exception.
+            eg. Statement stm = conn.createStatement();
 
   2. PreparedStatement:
     - PreparedStatement is an sub interface of Statement interface.
@@ -232,4 +237,52 @@ public class InsertUsingPreparedStatement {
 
 
 Q. Difference betn Statement and PreparedStatement.
-    
+
+CallableStatement:
+	- CallableStatement is an sub interface of preparedStatement.
+	- It is used to call stored procedures and functions.
+	- stored procedures and functions are the set of intructions or block of codes, which will be present at database side.
+	- We can an object of CallableStatement using prepareCall(String sql) method present inside connection object.
+	syntax : CallableStatement cstm = con.prepareCall(String sql);
+	- CallableStatement provides setter methods to set the data to the placeholder present in command to call procedures and functions.
+	eg: try {
+			Class.forName(driver);
+			
+			Connection con = DriverManager.getConnection(url);
+			
+			String sql = "call procedure_name(?,?,?)";
+			CallableStatement cstm = con.prepareCall(sql);
+			
+			cstm.setInt(1, 109);
+			cstm.setString(2, "Sharvari" );
+			cstm.setString(3, "naral@gmail.com");
+			
+			cstm.execute();
+			
+			con.close();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+				} catch (SQLException e) {
+					e.printStackTrace();
+					}
+
+Executing the query:
+	- To Exceute the query Statement provides following mathods:	
+		1. boolean excute():
+			- It is used to Exceute both select and non-select queries.
+			- The return type this method is boolean i.e. It returns true if the data is retrieved from the table else it returns false.
+		Program:
+
+		2. ResultSet executeQuery():
+			- It is used to Exceute only select queries.
+			- We cannot execute non-select queries.
+			- The return type this method is ResultSet.
+			- It returns the ResultSet object which will be holding the data retrieved from the table.
+			Program:
+		
+		3. int executeUpdate():
+			- It is Mainly used to execute DML statements.
+			- We cannot execute select queries.
+			- The return type this method is int i.e. It returns the number of rows affected by particular query.
+			Program:
+	

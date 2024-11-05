@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class InsertUsingPreparedStatement {
@@ -35,9 +34,9 @@ public class InsertUsingPreparedStatement {
 				
 				System.out.println("Enter emplyoee ID:");
 				int eid = sc.nextInt();
+				sc.nextLine();
 				System.out.println("Enter emplyoee Name:");
 				String ename = sc.nextLine();
-				sc.nextLine();
 				System.out.println("Enter emplyoee Email:");
 				String eemail = sc.nextLine();
 				
