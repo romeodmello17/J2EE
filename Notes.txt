@@ -1,0 +1,235 @@
+Q1. What is Data ?
+    give example.
+  -->  Data refers to raw, unprocessed facts and figures that can be collected and analyzed.
+  Example: A company collects data on the number of customers who visited their website in a day,
+  the number of sales made, the average order value, etc.
+
+Q2. Difference betn file and database.
+
+Q3. Why do we use database instead of  file to store the data.
+
+Q4. Example for database.
+
+Jdbc:
+    - It is an API which helps in creating connection with database and execute query.
+    - Jdbc API can be able to access the data present inside database.
+    - Jdbc API has inbuilt mechanism to load respective driver software into the memory.
+    - Jdbc API helps in performing CRUD operations on the database.
+
+How does Jdbc works ?
+    - Whenever we want our java application to commnuicate with particular database we make use of Jdbc API.
+    - Alone for Jdbc API it is not possible to  create a connection to  the particular database and do the CRUD operations.
+    - Jdbc API needs the help of respective driver software in order to create a connection.
+    - These driver software will be provided by database vendors.
+    - Jdbc API is independent of databases and driver software are denpendent on database.
+
+Steps to create connection to the database:
+  Step 1. Loading the Driver:
+          - If you want to create a connection we need to load the driver
+          - Class loader will help us to load the driver into the memory.
+          - There is a public static method "forName("fully qualified name")" inside Class which accepts fully qualified name of the driver and load it into the memory.
+          - forName() method throws class not found exception.
+          - Since it is a checked exception it is mandatory to handle try and catch.
+           eg. Class.forName("fully qualified name");
+  Step 2. Creating a connection:
+          Connection:
+            - Connection is an interface present inside java.sql package.
+            - We need to create a connection in order to do CRUD operations. 
+            - We can create connection object by using getConnection(String url , String username , String password) present inside DriverManager class.
+            - DriverManager is a helper class present inside java.sql package.
+            - It provides methods to create a connection.
+            - getConnection() method throws sql exception.
+            - It will create connection object only if url, username, and password are correct.
+            - getConnection() is a overloaded method.
+            - getConnection(url);
+            - getConnection(url,username,password);
+            - url = "jdbc:postgresql://localhost:5432/demo?user=postgres&password=root";
+            eg. Connection conn = DriverManager.getConnection(String url , String username , String password);
+
+  Step 3. Creating a Statement:
+          - We need to create Statement in order to pass the query from java application to the database.
+          Statement:
+            - Statement is an interface present inside java.sql package.
+            - We can create Statement object by using createStatement() method present inside Connection object.
+            - Mainly we use Statement to execute static queries or DDL Statements.
+            - createStatement() method throws sql exception.
+            eg. Statement stm = conn.createStatement();
+
+  Step 4. Exceute the query:
+          - To execute the query Statement provides excute() method.
+          - To this execute() method we need to pass a sql query, which we want to be excuted.
+          eg. stm.excute("INSERT INTO employee VALUES()");
+  
+  Step 5. Close the connection:
+          - connection is a costly resource.
+          - We need to close the connection once after the query is excuted to avoid data leakage, data inconsistency and for security reasons.
+          - To close the connection we call close() method present inside connection object.
+          - close() method throws sql exception.
+          eg. conn.close();
+
+Program to INSERT record into the table:
+  package com.ty;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Insert {
+	public static void main(String[] args) {
+		String driver = "org.postgresql.Driver";
+		String url = "jdbc:postgresql://localhost:5432/Rahul";
+		String username = "postgres";
+		String password = "root";
+		
+		try {
+			//step 1. load the driver
+			Class.forName(driver);
+			System.out.println("Driver loaded");
+			
+			//step 2. create a connection
+	Connection conn	= DriverManager.getConnection(url, username, password);
+				System.out.println("Connection is created");
+			//step 3. create a statement
+	Statement stm = conn.createStatement();
+		System.out.println("Statement is created");
+	
+			//step 4. execute a query
+	String query = "insert into employee values (102,'Ashaa',65323456432)";
+	stm.execute(query);
+		System.out.println("Query got executed");
+		
+			//step 5. Close the connection
+		conn.close();
+		System.out.println("connection is close");
+			
+	
+		} catch (ClassNotFoundException e) {
+			
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
+
+ResultSet:
+  - ResultSet is an interface present inside java.sql package.
+  - We can get the object of ResultSet using excuteQuery() method present inside statement object.
+  - ResultSet object holds the data which is fetched from the table.
+  - ResultSet acts like a pointer or cursor, in the beginning it will be pointing above the table.
+  - If we want to move that cursor to the particular record, we need to call next() method present inside ResultSet object.
+  - The return type of next() method is boolean i.e. it returns true if data is present after moving the cursor else it returns false.
+  - ResultSet object provides getter methods for particular datatypes which accepts column index and queues that data, where column index starts from 1.
+
+Program: 
+    fetch the record.
+    
+        package com.ty;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Fetch {
+	public static void main(String[] args) {
+		String driver = "org.postgresql.Driver";
+		String url = "jdbc:postgresql://localhost:5432/Rahul?user=postgres&password=root";
+		
+		try {
+			Class.forName(driver);
+			
+			Connection con = DriverManager.getConnection(url);
+			
+			Statement stm =	con.createStatement();
+		
+			String sql = "select * from employee";
+			
+			
+			ResultSet rs = stm.executeQuery(sql);
+			
+			while (rs.next()) {
+				System.out.println("=======Emplyoee==========");
+				int eid = rs.getInt(1);
+				String ename = rs.getString(2);
+				long enumber = rs.getLong(3);
+				
+				
+				System.out.println(eid);
+				System.out.println(ename);
+				System.out.println(enumber);
+				System.out.println("=================");
+			}
+			
+			con.close();
+			
+			System.out.println("Executed");
+		} catch (ClassNotFoundException e) {
+			
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
+	
+
+
+Types of Statements :
+  1. Statement:
+
+  2. PreparedStatement:
+    - PreparedStatement is an sub interface of Statement interface.
+    - PreparedStatement is Mainly used to execute dynamic queries.
+      Dynamic queries:
+        - These are the queries which are created using placeholder and take the data in runtime.
+    - We can create an object of PreparedStatement using preparedStatement(sql) present inside object of connection.
+    - To pass the data into the placeholder of dynamic query.
+    - PreparedStatement provides setter methods for particular datatypes, which accepts placeholder index and data.
+  
+Program:
+    insert record using preparedStatement.
+
+    package com.ty;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class InsertUsingPreparedStatement {
+	public static void main(String[] args) {
+		String driver = "org.postgresql.Driver";
+		String url = "jdbc:postgresql://localhost:5432/Rahul?user=postgres&password=root";
+		
+		try {
+			Class.forName(driver);
+			
+			Connection con = DriverManager.getConnection(url);
+			
+			String sql = "insert into employee values(?,?,?)";
+			PreparedStatement pstm = con.prepareStatement(sql);
+			
+			pstm.setInt(1, 105);
+			pstm.setString(2,"Poonam");
+			pstm.setLong(3, 87654323456L);
+			
+			pstm.execute();
+			
+			con.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+
+
+Q. Difference betn Statement and PreparedStatement.
+    

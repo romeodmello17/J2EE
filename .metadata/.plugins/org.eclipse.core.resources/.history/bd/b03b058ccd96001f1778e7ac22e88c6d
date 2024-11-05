@@ -1,0 +1,18 @@
+package com.ty;
+
+public class Insert {
+	public static void main(String[] args) {
+		String driver = "org.postgresql.Driver";
+		String url = "jdbc:postgresql://localhost:5432/Rahul";
+		String username = "postgres";
+		String password = "root";
+		
+		try {
+			Class.forName(driver);
+			System.out.println("Driver loaded");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
