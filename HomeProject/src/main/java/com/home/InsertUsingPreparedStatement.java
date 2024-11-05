@@ -14,6 +14,7 @@ public class InsertUsingPreparedStatement {
 		
 		String sql = "insert into emp values(?,?,?)";
 		
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		
 		try {
