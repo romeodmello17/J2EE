@@ -1,0 +1,39 @@
+package com.ty;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class ExecuteUpdateMethod {
+public static void main(String[] args) {
+	String driver = "org.postgresql.Driver";
+	String url = "jdbc:postgresql://localhost:5432/Rahul?user=postgres&password=root";
+	
+	try {
+		Class.forName(driver);
+		
+		Connection con = DriverManager.getConnection(url);
+		
+		Statement stm = con.createStatement();
+		
+		String sql1 = "select * from employee order by e_id";
+		
+		String sql2 = "insert into employee values(106,'Penga',76544343)";
+		
+//		int update1 = stm.executeUpdate(sql1);
+//		System.out.println(update1); A result was returned when none was expected.
+		
+		int update2 = stm.executeUpdate(sql2);
+		System.out.println(update2);
+		
+		
+		
+		
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}
+}
+}
