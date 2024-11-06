@@ -340,3 +340,22 @@
 2024-11-06 05:28:44,355 [Worker-36: Launching ClosingConnectionUsingTryWithResource] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 2024-11-06 05:28:44,356 [Worker-36: Launching ClosingConnectionUsingTryWithResource] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Rahul Ambavane\Desktop\JDBC\DemoProject\src\test\resources
 2024-11-06 05:30:01,846 [Worker-35: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2024-11-06 19:38:19,456 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2024-11-06 19:38:36,603 [Worker-8: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.ty:DemoProject:0.0.1-SNAPSHOT @ C:\Users\Rahul\Desktop\JDBC\DemoProject\pom.xml.
+2024-11-06 19:38:40,964 [Worker-8: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2024-11-06 19:38:40,964 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Rahul\Desktop\JDBC\DemoProject\src\main\resources
+2024-11-06 19:38:40,979 [Worker-8: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2024-11-06 19:38:40,979 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Rahul\Desktop\JDBC\DemoProject\src\test\resources
+2024-11-06 19:38:41,230 [Worker-8: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.home:HomeProject:0.0.1-SNAPSHOT @ C:\Users\Rahul\Desktop\JDBC\HomeProject\pom.xml.
+2024-11-06 19:38:41,379 [Worker-8: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2024-11-06 19:38:41,386 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Rahul\Desktop\JDBC\HomeProject\src\main\resources
+2024-11-06 19:38:41,386 [Worker-8: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2024-11-06 19:38:41,394 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Rahul\Desktop\JDBC\HomeProject\src\test\resources
+2024-11-06 19:38:42,896 [Worker-7: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2024-11-06 19:38:42,896 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Rahul\Desktop\JDBC\DemoProject\src\main\resources
+2024-11-06 19:38:42,902 [Worker-7: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2024-11-06 19:38:42,902 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Rahul\Desktop\JDBC\DemoProject\src\test\resources
+2024-11-06 19:38:43,108 [Worker-7: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2024-11-06 19:38:43,108 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Rahul\Desktop\JDBC\HomeProject\src\main\resources
+2024-11-06 19:38:43,108 [Worker-7: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2024-11-06 19:38:43,108 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\Rahul\Desktop\JDBC\HomeProject\src\test\resources

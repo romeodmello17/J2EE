@@ -18,7 +18,7 @@ public class ExecuteQueryMethod {
 
 			Statement stm = con.createStatement();
 
-			String sql1 = "select * from employee order by e_id";
+			String sql1 = "select * from employee order by empid";
 
 			String sql2 = "insert into employee values(100,'Penga',2345533)";
 

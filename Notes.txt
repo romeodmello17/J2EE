@@ -286,3 +286,99 @@ Executing the query:
 			- The return type this method is int i.e. It returns the number of rows affected by particular query.
 			Program:
 	
+Closing the connection:
+
+	- Since Connection is a costly resource, it is necessary to close the connection
+	using following ways.
+	- If we close the connection with try block, connection might not be closed if we get any exception once after connection is created.
+	
+	1. Close connection using finally block:
+			Program:
+
+				
+		Connection con = null;
+
+		try {
+			Class.forName(driver);
+			System.out.println("Driver is Loaded");
+
+			con = DriverManager.getConnection(url);
+			System.out.println("Connection is created");
+
+			Statement stm = con.createStatement();
+			System.out.println("Statement is created");
+
+			String sql = "select * from employee order by e_d";
+			ResultSet rs = stm.executeQuery(sql);
+			while (rs.next()) {
+				System.out.println("==============Employee=============");
+				int eid = rs.getInt(1);
+				String ename = rs.getString(2);
+				long econtact = rs.getLong(3);
+
+				System.out.println(eid);
+				System.out.println(ename);
+				System.out.println(econtact);
+				System.out.println("===================================");
+			}
+			System.out.println("Query executed");
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (con != null) {
+					con.close();
+					System.out.println("Connection is Closed");
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+	2. Closing connection Using try with resource:
+		- syntax : try(Connection con = DriverManager.getConnection();){
+
+		}catch(exception e){
+
+		}
+		- Try with resource block has been introduce after JAVA 8 .
+		- In try with resource we need to write a resource which we want to be closed inside try.
+		- In this case compiler itself going to close the connection once the pointer comes out of the try block.
+		- We dont need to close the connection explicitly.
+		- It is good practice to use try with resource block to close the connection.
+
+		Program:
+
+			try {
+			Class.forName(driver);
+			System.out.println("Driver is Loaded");
+		} catch (ClassNotFoundException e2) {
+			e2.printStackTrace();
+		}
+		try (Connection con = DriverManager.getConnection(url);) {
+
+			Statement stm = con.createStatement();
+			System.out.println("Statement is created");
+
+			String sql = "select * from employee order by e_id";
+			ResultSet rs = stm.executeQuery(sql);
+			while (rs.next()) {
+				System.out.println("==============Employee=============");
+				int eid = rs.getInt(1);
+				String ename = rs.getString(2);
+				long econtact = rs.getLong(3);
+
+				System.out.println(eid);
+				System.out.println(ename);
+				System.out.println(econtact);
+				System.out.println("===================================");
+			}
+			System.out.println("Query executed");
+
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
